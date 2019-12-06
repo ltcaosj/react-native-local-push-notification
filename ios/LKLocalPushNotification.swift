@@ -28,10 +28,23 @@ class LKLocalPushNotification: RCTEventEmitter {
     }
   }
   
+  @objc func initialize(){
+     let notificationCenter = UNUserNotificationCenter.current()
+           notificationCenter.delegate = self
+           notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
+               print("notifications permission granted = \(granted), error = \(error?.localizedDescription ?? "(none)")")
+           }
+  }
   
   @objc func notify(_ title : String, body : String){
     
   }
-      
-  
+}
+
+extension LKLocalPushNotification: UNUserNotificationCenterDelegate {
+
+    // Needs to be implemented to receive notifications both in foreground and background
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([UNNotificationPresentationOptions.alert, UNNotificationPresentationOptions.sound])
+    }
 }
