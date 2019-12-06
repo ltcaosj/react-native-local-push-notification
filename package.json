@@ -1,0 +1,33 @@
+{
+  "name": "@react-native-lightkits/local-push-notification",
+  "title": "React Native Local Push Notification",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ltcaosj/react-native-local-push-notification.git",
+    "baseUrl": "https://github.com/ltcaosj/react-native-local-push-notification"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Long Cao",
+    "email": "ltcaosj@email.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {        
+    "react": "^16.9.0",
+    "react-native": ">=0.61.5"
+  },
+  "devDependencies": {
+    "react": "^16.9.0",
+    "react-native": "^0.61.5"
+  }
+}
