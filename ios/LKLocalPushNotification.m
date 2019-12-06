@@ -1,14 +1,12 @@
-#import "LKLocalPushNotification.h"
+#import <Foundation/Foundation.h>
 
+#import "React/RCTBridgeModule.h"
+#import "React/RCTEventEmitter.h"
 
-@implementation LKLocalPushNotification
+@interface RCT_EXTERN_MODULE(LKLocalPushNotification, RCTEventEmitter)
 
-RCT_EXPORT_MODULE()
-
-RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
-{
-    // TODO: Implement some actually useful functionality
-	callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
-}
-
+RCT_EXTERN_METHOD(
+                  notify:(NSString *)title
+                  body:(NSString *)body
+                )
 @end
