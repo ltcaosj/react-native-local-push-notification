@@ -9,4 +9,7 @@ RCT_EXTERN_METHOD(
                   notify:(NSString *)title
                   body:(NSString *)body
                 )
+RCT_EXTERN_METHOD(
+  initialize
+)
 @end

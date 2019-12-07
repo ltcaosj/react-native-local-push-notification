@@ -11,6 +11,8 @@ import Foundation
 @objc(LKLocalPushNotification)
 class LKLocalPushNotification: RCTEventEmitter {
   
+  var notificationCenter: UNUserNotificationCenter!
+
   override static func requiresMainQueueSetup() -> Bool {
     return false
   }
@@ -29,15 +31,20 @@ class LKLocalPushNotification: RCTEventEmitter {
   }
   
   @objc func initialize(){
-     let notificationCenter = UNUserNotificationCenter.current()
-           notificationCenter.delegate = self
-           notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
-               print("notifications permission granted = \(granted), error = \(error?.localizedDescription ?? "(none)")")
-           }
+    self.notificationCenter = UNUserNotificationCenter.current()
+    self.notificationCenter.delegate = self
+    self.notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
+        print("notifications permission granted = \(granted), error = \(error?.localizedDescription ?? "(none)")")
+    }
   }
   
   @objc func notify(_ title : String, body : String){
-    
+    let content = UNMutableNotificationContent()
+    content.title = title
+    content.body = body
+    content.sound = UNNotificationSound.default
+    let request = UNNotificationRequest(identifier: "enter", content: content, trigger: nil)
+    notificationCenter.add(request, withCompletionHandler: nil)
   }
 }
 
